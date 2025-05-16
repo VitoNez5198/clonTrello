@@ -1,0 +1,31 @@
+/* Variables CSS */
+:root {
+    /* Colores principales */
+    --primary-color: #1a73e8;
+    --primary-light: #e8f0fe;
+    --secondary-color: #34a853;
+    --accent-color: #ea4335;
+    --warning-color: #fbbc05;
+    --card-indicator-color: var(--primary-color);
+    
+    /* Fondo y contenedores */
+    --background-color: #f0f4f8;
+    --column-background: #ffffff;
+    --card-hover-bg: #fafbfc;
+    
+    /* Texto */
+    --text-color: #202124;
+    --text-light: #5f6368;
+    --text-white: #ffffff;
+    
+    /* Efectos */
+    --border-radius: 8px;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+    
+    /* Gradientes */
+    --gradient-blue: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+    --gradient-green: linear-gradient(135deg, #34a853 0%, #4caf50 100%);
+    --gradient-red: linear-gradient(135deg, #ea4335 0%, #ff5252 100%);
+} 
