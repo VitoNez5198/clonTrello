@@ -86,4 +86,4 @@ TaskiTo/
 - Filtrado y búsqueda de tarjetas
 - Modo oscuro
 - Exportación/importación de datos
-- Soporte para múltiples tableros
+- Soporte para múltiples tableros.
