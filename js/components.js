@@ -15,7 +15,7 @@ export function createCard(title, description = '', startDate = '', endDate = ''
     card.innerHTML = `
         <div class="card-header">
             <h3>${title}</h3>
-            <button class="delete-card-btn" title="Eliminar tarjeta">
+            <button class="delete-card-btn" title="Eliminar tarea">
                 <i class="fas fa-trash-alt"></i>
             </button>
         </div>
