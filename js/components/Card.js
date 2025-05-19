@@ -1,5 +1,6 @@
 import { CONFIG } from '../config/constants.js';
 import { formatDate, isOverdue } from '../utils/dateUtils.js';
+import { saveToLocalStorage } from '../utils.js';
 
 export class Card {
     constructor(title, description = '', startDate = '', endDate = '') {
@@ -57,14 +58,17 @@ export class Card {
 
         title.addEventListener('blur', () => {
             this.title = title.textContent;
+            saveToLocalStorage();
         });
 
         description.addEventListener('blur', () => {
             this.description = description.textContent;
+            saveToLocalStorage();
         });
 
         deleteBtn.addEventListener('click', () => {
             card.remove();
+            saveToLocalStorage();
         });
 
         card.addEventListener('dragstart', () => {
@@ -73,6 +77,7 @@ export class Card {
 
         card.addEventListener('dragend', () => {
             card.classList.remove('dragging');
+            saveToLocalStorage();
         });
     }
 

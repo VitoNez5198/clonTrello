@@ -79,6 +79,8 @@ body {
     border-top: 3px solid var(--primary-color);
     -webkit-user-select: none;
     user-select: none;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .column:nth-child(2) {
@@ -247,6 +249,9 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .card::before {
@@ -721,190 +726,157 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-    background: var(--column-background);
-    border-radius: var(--border-radius);
+    background-color: white;
+    border-radius: 8px;
     width: 90%;
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
-    box-shadow: var(--hover-shadow);
-    animation: modalSlideIn 0.3s ease;
-    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header {
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
-    position: sticky;
-    top: 0;
-    background: var(--column-background);
-    z-index: 2;
 }
 
-.modal-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
     color: var(--text-color);
-    border: none;
-    background: none;
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 4px;
 }
 
-.modal-title:focus {
-    outline: none;
-    background: var(--primary-light);
-}
-
-.card-modal .close-modal-btn {
+.close-modal-btn {
     background: none;
     border: none;
-    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
     cursor: pointer;
-    color: var(--text-light);
+    padding: 0.5rem;
     border-radius: 4px;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: background-color 0.2s;
 }
 
-.card-modal .close-modal-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: var(--accent-color);
+.close-modal-btn:hover {
+    background-color: #f0f0f0;
 }
 
 .modal-body {
-    padding: 1.5rem;
+    padding: 1rem;
+}
+
+.modal-section {
+    margin-bottom: 1.5rem;
+}
+
+.modal-section h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.modal-description {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: inherit;
 }
 
 .modal-dates {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    gap: 1rem;
 }
 
-.date-input-group label {
+.date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.date-group label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
+    color: var(--text-color);
 }
 
-.modal-date {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #e8eaed;
-    border-radius: var(--border-radius);
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-color);
-    background: var(--column-background);
-    transition: var(--transition);
+.date-group input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: none;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.modal-date:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    background: var(--primary-light);
-}
-
-.description-group label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.modal-description {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #e8eaed;
-    border-radius: var(--border-radius);
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: var(--text-color);
-    background: var(--column-background);
-    transition: var(--transition);
-    resize: vertical;
-    min-height: 120px;
-}
-
-.modal-description:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    background: var(--primary-light);
+.option-btn:hover {
+    background-color: #f0f0f0;
 }
 
 .modal-footer {
-    padding: 1.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-top: 1px solid #eee;
     display: flex;
     justify-content: flex-end;
-    position: sticky;
-    bottom: 0;
-    background: var(--column-background);
-    z-index: 2;
 }
 
-.card-modal .save-modal-btn {
-    background: var(--gradient-blue);
-    color: var(--text-white);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: var(--transition);
-    font-weight: 500;
-    font-size: 0.9rem;
+.save-changes-btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.card-modal .save-modal-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow);
+.save-changes-btn:hover {
+    background-color: var(--primary-color-dark);
 }
 
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Asegurar que los botones de la tarjeta estén por encima del modal */
-.card .delete-card-btn {
-    position: relative;
-    z-index: 1;
+    .modal-dates {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Estilos del header y logo */
@@ -972,4 +944,28 @@ body {
     transform: scaleX(1);
 }
 
-/* Resto de estilos existentes */ 
+/* Optimización de animaciones */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .column,
+    .modal-content,
+    .color-display,
+    .add-card-btn,
+    .add-column-btn {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Optimización de lazy loading */
+.card:not(.card-visible) {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.card-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+} 

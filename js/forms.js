@@ -37,7 +37,7 @@ export function showAddCardForm(column) {
         <div class="form-buttons">
             <button type="button" class="save-btn">
                 <i class="fas fa-plus"></i>
-                Agregar tarjeta
+                Agregar tarea
             </button>
             <button type="button" class="cancel-btn">
                 <i class="fas fa-times"></i>
@@ -59,19 +59,32 @@ export function showAddCardForm(column) {
     const startDatePicker = flatpickr(startDate, {
         dateFormat: "Y-m-d",
         minDate: "today",
-        locale: "es"
+        locale: "es",
+        onChange: function(selectedDates) {
+            // Actualizar la fecha mínima de la fecha de término
+            if (selectedDates[0]) {
+                endDatePicker.set('minDate', selectedDates[0]);
+                // Si la fecha de término es anterior a la nueva fecha de inicio, actualizarla
+                if (endDatePicker.selectedDates[0] && endDatePicker.selectedDates[0] < selectedDates[0]) {
+                    endDatePicker.setDate(selectedDates[0]);
+                }
+            }
+        }
     });
 
     const endDatePicker = flatpickr(endDate, {
         dateFormat: "Y-m-d",
         minDate: "today",
-        locale: "es"
+        locale: "es",
+        onChange: function(selectedDates) {
+            // Si se selecciona una fecha de término, asegurarse de que no sea anterior a la fecha de inicio
+            if (selectedDates[0] && startDatePicker.selectedDates[0]) {
+                if (selectedDates[0] < startDatePicker.selectedDates[0]) {
+                    endDatePicker.setDate(startDatePicker.selectedDates[0]);
+                }
+            }
+        }
     });
-
-    // Configurar dependencia entre fechas
-    startDatePicker.config.onChange = function(selectedDates) {
-        endDatePicker.set('minDate', selectedDates[0]);
-    };
 
     // Enfocar el título
     const titleInput = form.querySelector('.card-title');

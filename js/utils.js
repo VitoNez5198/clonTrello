@@ -35,9 +35,9 @@ export function saveToLocalStorage() {
         const cards = Array.from(column.querySelectorAll('.card')).map(card => {
             return {
                 title: card.querySelector('h3').textContent,
-                description: document.querySelector(`[data-modal-id="${card.getAttribute('data-card-id')}"] .modal-description`)?.value || '',
-                startDate: card.querySelector('.date-range:first-child .date-value').textContent,
-                endDate: card.querySelector('.date-range:last-child .date-value').textContent
+                description: card.querySelector('.card-description').textContent,
+                startDate: card.querySelector('.date-range:first-child .date-value')?.textContent || '',
+                endDate: card.querySelector('.date-range:last-child .date-value')?.textContent || ''
             };
         });
 

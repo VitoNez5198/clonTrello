@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cuadrado con bordes redondeados -->
+    <rect x="32" y="32" width="448" height="448" rx="134" fill="#34a853"/>
+    <!-- Check mark -->
+    <path d="M384 160L224 320L128 224" stroke="white" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
