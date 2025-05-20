@@ -1,16 +1,16 @@
-# TaskiTo - Gestor de Tareas
+# TaskiTo - Clon de Trello en el Navegador
 
-TaskiTo es una aplicación web para la gestión de tareas inspirada en Trello, desarrollada con HTML, CSS y JavaScript vanilla. Permite organizar tareas en columnas personalizables con funcionalidad de arrastrar y soltar.
+TaskiTo es una aplicación de gestión de tareas tipo Kanban desarrollada con HTML, CSS y JavaScript puro. Permite crear columnas, agregar tarjetas con fechas límite, y organizar tareas visualmente. Funciona 100% en el navegador, sin necesidad de base de datos o backend.
 
 ## Características
 
-- Interfaz moderna y responsive
-- Columnas personalizables con códigos de color
-- Arrastrar y soltar tarjetas entre columnas
-- Persistencia de datos local
-- Fechas de inicio y vencimiento para tareas
-- Notificaciones de tareas vencidas
-- Edición en línea de títulos
+- Crear y personalizar columnas.
+- Agregar tarjetas con título, descripción y fechas (inicio y vencimiento).
+- Mover tarjetas entre columnas mediante arrastrar y soltar.
+- Las tarjetas vencidas se resaltan automáticamente.
+- Todos los datos se almacenan en el navegador usando localStorage.
+- Estilo responsive adaptado a pantallas grandes y medianas.
+- Aplicación totalmente funcional sin conexión a internet.
 
 ## Tecnologías Utilizadas
 
@@ -24,28 +24,37 @@ TaskiTo es una aplicación web para la gestión de tareas inspirada en Trello, d
 ## Estructura del Proyecto
 
 ```
-TaskiTo/
-├── assets/           # Recursos estáticos
-├── css/             # Estilos CSS
-│   ├── components/  # Componentes CSS
-│   │   └── header.css
-│   ├── utils/      # Utilidades CSS
-│   │   ├── animations.css
-│   │   └── variables.css
-│   └── styles.css   # Estilos principales
-├── js/              # Scripts JavaScript
-│   ├── components/  # Componentes JS
-│   │   └── Card.js
-│   ├── config/     # Configuración
-│   │   └── constants.js
-│   ├── services/   # Servicios
-│   │   └── stateManager.js
-│   ├── utils/      # Utilidades JS
-│   │   └── dateUtils.js
-│   ├── app.js      # Punto de entrada
-│   ├── dragAndDrop.js
-│   └── forms.js
-└── index.html       # Archivo HTML principal
+CLON_TRELLO/
+│
+├── assets/
+│ └── cheque.svg # Íconos o recursos gráficos
+│
+├── css/
+│ ├── components/
+│ │ └── header.css # Estilos específicos del encabezado
+│ └── utils/
+│ ├── animations.css # Animaciones personalizadas
+│ ├── variables.css # Variables CSS (colores, tamaños, etc.)
+│ └── styles.css # Estilos generales
+│
+├── js/
+│ ├── components/
+│ │ └── Card.js # Componente para crear tarjetas
+│ ├── config/
+│ │ └── constants.js # Constantes globales
+│ ├── services/
+│ │ └── stateManager.js # Lógica para manejar el estado de la app
+│ ├── utils/
+│ │ ├── dateUtils.js # Funciones relacionadas con fechas
+│ │ └── optimizations.js # Mejoras de rendimiento u optimización
+│ ├── app.js # Punto de entrada principal
+│ ├── components.js # Generación de columnas
+│ ├── dragAndDrop.js # Lógica para arrastrar y soltar
+│ ├── forms.js # Manejo de formularios
+│ └── utils.js # Funciones auxiliares generales
+│
+├── index.html # Página principal
+└── README.md # Este archivo
 ```
 
 ## Módulos Principales
@@ -76,7 +85,8 @@ TaskiTo/
 
 ## Instalación y Uso
 
-1. Clona el repositorio
+1. Clona el repositorio ```bash
+git clone https://github.com/VitoNez5198/clonTrello.git```
 2. Abre `index.html` en tu navegador
 3. ¡Listo para usar!
 
